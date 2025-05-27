@@ -1,0 +1,192 @@
+[
+  {
+    "id": "pin-001",
+    "lat": 43.8235,
+    "lng": -111.7921,
+    "name": "Porter Park",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80",
+    "note": "A great place for a picnic and to relax.",
+    "rating": 5,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-002",
+    "lat": 43.8252,
+    "lng": -111.7899,
+    "name": "Nature Trail",
+    "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80",
+    "note": "A beautiful walking trail with lots of trees.",
+    "rating": 4,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "pin-003",
+    "lat": 43.8267,
+    "lng": -111.7952,
+    "name": "BYU-Idaho Gardens",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80",
+    "note": "Beautiful gardens with flowers and walking paths.",
+    "rating": 4,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-004",
+    "lat": 43.8248,
+    "lng": -111.7971,
+    "name": "Cress Creek Trail",
+    "image": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80",
+    "note": "A scenic trail with a moderate climb and great views.",
+    "rating": 3,
+    "difficulty": "Hard"
+  },
+  {
+    "id": "pin-005",
+    "lat": 43.8225,
+    "lng": -111.7901,
+    "name": "Rexburg Rapids",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=81",
+    "note": "Fun water park for families.",
+    "rating": 4,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-007",
+    "lat": 43.821,
+    "lng": -111.793,
+    "name": "Smith Park",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=81",
+    "note": "Lots of open space and playgrounds.",
+    "rating": 3,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-008",
+    "lat": 43.826,
+    "lng": -111.785,
+    "name": "Nature Overlook",
+    "image": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=81",
+    "note": "Beautiful view of the valley.",
+    "rating": 4,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "pin-009",
+    "lat": 43.824,
+    "lng": -111.799,
+    "name": "Hidden Lake",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=82",
+    "note": "Small lake, great for fishing.",
+    "rating": 5,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "pin-010",
+    "lat": 43.823,
+    "lng": -111.788,
+    "name": "Downtown Plaza",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=82",
+    "note": "Shops, food, and music events.",
+    "rating": 4,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-011",
+    "lat": 43.8205,
+    "lng": -111.7915,
+    "name": "Sunset Point",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=83",
+    "note": "Best place to watch the sunset.",
+    "rating": 5,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-012",
+    "lat": 43.825,
+    "lng": -111.787,
+    "name": "Historic Depot",
+    "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=83",
+    "note": "Old train depot with tours.",
+    "rating": 3,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-013",
+    "lat": 43.8271,
+    "lng": -111.7932,
+    "name": "Maple Grove Park",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=90",
+    "note": "Quiet park with maple trees.",
+    "rating": 4,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-014",
+    "lat": 43.8257,
+    "lng": -111.7902,
+    "name": "Riverwalk Trail",
+    "image": "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=90",
+    "note": "Trail along the river, great for jogging.",
+    "rating": 5,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "pin-016",
+    "lat": 43.8243,
+    "lng": -111.7975,
+    "name": "Birch Bend",
+    "image": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=90",
+    "note": "Bend in the trail with birch trees.",
+    "rating": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": "pin-017",
+    "lat": 43.8222,
+    "lng": -111.7911,
+    "name": "Cedar Point",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=91",
+    "note": "Point with cedar trees and benches.",
+    "rating": 5,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "pin-019",
+    "lat": 43.8215,
+    "lng": -111.7937,
+    "name": "Pine Ridge",
+    "image": "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=91",
+    "note": "Ridge with pine trees and nice views.",
+    "rating": 3,
+    "difficulty": "Hard"
+  },
+  {
+    "id": "pin-020",
+    "lat": 43.8282,
+    "lng": -111.8005,
+    "name": "Spruce Hollow",
+    "image": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=91",
+    "note": "Hollow with spruce trees, good for birding.",
+    "rating": 2,
+    "difficulty": "Moderate"
+  },
+  {
+    "id": "fef13c99-5b13-4160-981d-947e887c8a73",
+    "lat": 43.82452951601288,
+    "lng": -111.78145408717684,
+    "name": "Test",
+    "image": "",
+    "note": "res",
+    "rating": "3",
+    "difficulty": "Hard"
+  },
+  {
+    "id": "a66cadf7-edfb-4454-ad6d-00d0799d3e4f",
+    "lat": 43.8250249038629,
+    "lng": -111.77656173793368,
+    "name": "test",
+    "image": "",
+    "note": "",
+    "rating": "",
+    "difficulty": "Easy"
+  }
+]
