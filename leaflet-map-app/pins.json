@@ -110,16 +110,6 @@
     "difficulty": "Easy"
   },
   {
-    "id": "pin-013",
-    "lat": 43.8271,
-    "lng": -111.7932,
-    "name": "Maple Grove Park",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=90",
-    "note": "Quiet park with maple trees.",
-    "rating": 4,
-    "difficulty": "Easy"
-  },
-  {
     "id": "pin-014",
     "lat": 43.8257,
     "lng": -111.7902,
@@ -188,13 +178,5 @@
     "note": "",
     "rating": "",
     "difficulty": "Easy"
-  },
-  {
-    "id": "869704fc-7477-4893-94a4-4c62793eeeef",
-    "lat": 43.838213093509175,
-    "lng": -111.78505897609286,
-    "name": "test",
-    "image": "/uploads/1748391861380-724503915.jpg",
-    "note": "test"
   }
 ]
