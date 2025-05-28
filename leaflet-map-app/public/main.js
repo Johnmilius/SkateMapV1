@@ -112,7 +112,7 @@ map.on('click', function (e) {
   const popupContent = `
     <div style="width: 260px; padding: 10px; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
       <h3 style="margin: 0 0 10px 0; font-size: 1.1em; color: #333;">Add a Pin</h3>
-      <form id="pinForm">
+      <form id="pinForm" enctype="multipart/form-data">
         <input type="text" id="name" name="name" placeholder="Name" style="width: 100%; padding: 7px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em;" />
         <select id="rating" name="rating" style="width: 100%; padding: 7px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em;">
           <option value="" disabled selected>Rating</option>
@@ -128,7 +128,7 @@ map.on('click', function (e) {
           <option value="Moderate">Moderate</option>
           <option value="Hard">Hard</option>
         </select>
-        <input type="text" id="image" name="image" placeholder="Image URL" style="width: 100%; padding: 7px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em;" />
+        <input type="file" id="image" name="image" accept="image/*" style="width: 100%; padding: 7px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em;" />
         <textarea id="note" name="note" placeholder="Note" style="width: 100%; padding: 7px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em; resize: vertical; min-height: 40px;"></textarea>
         <button type="button" id="submitPin" style="width: 100%; padding: 8px; background: #4CAF50; color: #fff; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; transition: background 0.2s;">Submit</button>
       </form>
@@ -143,18 +143,15 @@ map.on('click', function (e) {
 
   // Handle form submission for the new pin
   document.getElementById('submitPin').addEventListener('click', function () {
-    // Get values from the form fields
-    const name = document.getElementById('name').value;
-    const image = document.getElementById('image').value;
-    const note = document.getElementById('note').value;
-    const rating = document.getElementById('rating').value;
-    const difficulty = document.getElementById('difficulty').value;
+    const form = document.getElementById('pinForm');
+    const formData = new FormData(form);
+    formData.append('lat', lat);
+    formData.append('lng', lng);
 
     // Send the new pin data to the backend
     fetch('/api/pins', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ lat, lng, name, image, note, rating, difficulty })
+      body: formData
     })
       .then(res => res.json())
       .then(data => {

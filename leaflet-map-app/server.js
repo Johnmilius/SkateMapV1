@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid'); // Add at the top with other requires
+const multer = require('multer'); // For handling file uploads
 const app = express();
 const PORT = 3000;
 
@@ -9,6 +10,20 @@ let pinpoints = []; // In-memory store
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Set up multer storage for uploaded images
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, 'public', 'uploads'));
+  },
+  filename: function (req, file, cb) {
+    // Use a unique filename (timestamp + original name)
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    const ext = path.extname(file.originalname);
+    cb(null, uniqueSuffix + ext);
+  }
+});
+const upload = multer({ storage: storage });
 
 // Load pins from pins.json when the server starts
 const pinsFilePath = path.join(__dirname, 'pins.json');
@@ -34,10 +49,18 @@ app.get('/api/pins', (req, res) => {
 });
 
 // Add a new pinpoint
-app.post('/api/pins', (req, res) => {
-  const { lat, lng, name, image, note, rating, difficulty } = req.body;
-  if (typeof lat === 'number' && typeof lng === 'number') {
-    const newPin = { id: uuidv4(), lat, lng, name, image, note, rating, difficulty };
+app.post('/api/pins', upload.single('image'), (req, res) => {
+  const { lat, lng, name, note, rating, difficulty } = req.body;
+  let image = '';
+  if (req.file) {
+    // Store the relative path to the uploaded image
+    image = '/uploads/' + req.file.filename;
+  }
+  // Parse lat/lng as numbers
+  const latNum = parseFloat(lat);
+  const lngNum = parseFloat(lng);
+  if (!isNaN(latNum) && !isNaN(lngNum)) {
+    const newPin = { id: uuidv4(), lat: latNum, lng: lngNum, name, image, note, rating, difficulty };
     pinpoints.push(newPin);
     // Save the updated pinpoints array to pins.json
     try {
