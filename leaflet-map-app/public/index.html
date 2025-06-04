@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Leaflet Pin Drop</title>
+  <title>Skate Drop</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>Skate Drop</header>
+  <a href="login.html" id="loginBtn">Login</a>
+  <a href="createAccount.html" id="createAccountBtn">Create Account</a>
   <h1>Drop a Pin!</h1>
   <form id="searchForm">
     <input type="text" id="searchInput" placeholder="Search by name, note, or difficulty..." />
     <button type="submit" id="searchBtn">Search</button>
   </form>
   <div id="map"></div>
-
+  <footer>&copy; 2025 Skate Drop &mdash; All rights reserved.</footer>
   <script type="module" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script type="module" src="main.js"></script>
 </body>

@@ -1,3 +1,5 @@
+// Node.js/Express server for backend API routes and static file serving
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -91,6 +93,39 @@ app.delete('/api/pins/:id', (req, res) => {
   } else {
     res.status(400).json({ error: 'Invalid pin id' });
   }
+});
+
+// Profiles functionality
+const profilesFilePath = path.join(__dirname, 'profiles.json');
+
+// Get all profiles
+app.get('/api/profiles', (req, res) => {
+  if (fs.existsSync(profilesFilePath)) {
+    const profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+    res.json(profiles);
+  } else {
+    res.json([]);
+  }
+});
+
+// Create a new profile
+app.post('/api/profiles', (req, res) => {
+  const { username, email } = req.body;
+  if (!username || !email) {
+    return res.status(400).json({ error: 'Username and email are required.' });
+  }
+  let profiles = [];
+  if (fs.existsSync(profilesFilePath)) {
+    profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+  }
+  // Check for duplicate username or email
+  if (profiles.some(p => p.username === username || p.email === email)) {
+    return res.status(409).json({ error: 'Username or email already exists.' });
+  }
+  const newProfile = { id: uuidv4(), username, email };
+  profiles.push(newProfile);
+  fs.writeFileSync(profilesFilePath, JSON.stringify(profiles, null, 2));
+  res.status(201).json(newProfile);
 });
 
 app.listen(PORT, () => {

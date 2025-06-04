@@ -1,5 +1,5 @@
 // map.js
-// Handles map initialization and tile layers
+// Handles map initialization, events, and map-related logic
 
 export function initializeMap() {
   const map = L.map('map').setView([43.825386, -111.792824], 14);

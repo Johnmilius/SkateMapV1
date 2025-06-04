@@ -1,3 +1,4 @@
+// Main entry point for initializing the app and handling global logic
 import { initializeMap } from './map.js';
 import { renderPins } from './pins.js';
 import { fetchPins, deletePin, addPin } from './api.js';

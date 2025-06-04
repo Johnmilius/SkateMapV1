@@ -1,3 +1,5 @@
+// Handles API requests for pins (fetching, creating, deleting, etc.)
+
 // api.js
 // Handles all API requests to the backend
 

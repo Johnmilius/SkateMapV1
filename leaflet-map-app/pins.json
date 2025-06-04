@@ -60,16 +60,6 @@
     "difficulty": "Easy"
   },
   {
-    "id": "pin-008",
-    "lat": 43.826,
-    "lng": -111.785,
-    "name": "Nature Overlook",
-    "image": "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=81",
-    "note": "Beautiful view of the valley.",
-    "rating": 4,
-    "difficulty": "Moderate"
-  },
-  {
     "id": "pin-009",
     "lat": 43.824,
     "lng": -111.799,
@@ -160,16 +150,6 @@
     "difficulty": "Moderate"
   },
   {
-    "id": "fef13c99-5b13-4160-981d-947e887c8a73",
-    "lat": 43.82452951601288,
-    "lng": -111.78145408717684,
-    "name": "Test",
-    "image": "",
-    "note": "res",
-    "rating": "3",
-    "difficulty": "Hard"
-  },
-  {
     "id": "a66cadf7-edfb-4454-ad6d-00d0799d3e4f",
     "lat": 43.8250249038629,
     "lng": -111.77656173793368,
@@ -177,6 +157,24 @@
     "image": "",
     "note": "",
     "rating": "",
+    "difficulty": "Easy"
+  },
+  {
+    "id": "c349b042-2ac3-4899-882d-28871505fdd6",
+    "lat": 43.810633761538966,
+    "lng": -111.79527283064091,
+    "name": "",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": "dc92eaf4-5099-47c7-a75c-fa44e2ee4b7a",
+    "lat": 43.82803842455423,
+    "lng": -111.7841148385196,
+    "name": "test1",
+    "image": "",
+    "note": "test1 public\r\n",
+    "rating": "1",
     "difficulty": "Easy"
   }
 ]

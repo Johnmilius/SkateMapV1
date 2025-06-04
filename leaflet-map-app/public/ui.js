@@ -1,3 +1,4 @@
+// Handles UI rendering and DOM manipulation for the app
 // ui.js
 // Handles UI helpers, popup creation, and form handling
 
