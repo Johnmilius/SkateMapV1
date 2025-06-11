@@ -52,7 +52,7 @@ app.get('/api/pins', (req, res) => {
 
 // Add a new pinpoint
 app.post('/api/pins', upload.single('image'), (req, res) => {
-  const { lat, lng, name, note, rating, difficulty } = req.body;
+  const { lat, lng, name, note, rating, difficulty, public: isPublic, userId } = req.body;
   let image = '';
   if (req.file) {
     // Store the relative path to the uploaded image
@@ -61,8 +61,23 @@ app.post('/api/pins', upload.single('image'), (req, res) => {
   // Parse lat/lng as numbers
   const latNum = parseFloat(lat);
   const lngNum = parseFloat(lng);
+  // Parse rating as number if present
+  const ratingNum = rating !== undefined && rating !== '' ? Number(rating) : undefined;
+  // Parse isPublic as boolean
+  const publicBool = isPublic === 'true' || isPublic === true;
   if (!isNaN(latNum) && !isNaN(lngNum)) {
-    const newPin = { id: uuidv4(), lat: latNum, lng: lngNum, name, image, note, rating, difficulty };
+    const newPin = {
+      id: uuidv4(),
+      lat: latNum,
+      lng: lngNum,
+      name,
+      image,
+      note,
+      rating: ratingNum,
+      difficulty,
+      public: publicBool,
+      userId: userId || null
+    };
     pinpoints.push(newPin);
     // Save the updated pinpoints array to pins.json
     try {

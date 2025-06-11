@@ -24,6 +24,9 @@ export function createPinFormPopup(lat, lng) {
         </select>
         <input type="file" id="image" name="image" accept="image/*" style="width: 100%; padding: 7px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em;" />
         <textarea id="note" name="note" placeholder="Note" style="width: 100%; padding: 7px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.97em; resize: vertical; min-height: 40px;"></textarea>
+        <label style="display:block; margin-bottom:8px; text-align:left;">
+          <input type="checkbox" id="publicPin" name="publicPin" checked style="margin-right:6px;"> Public Pin
+        </label>
         <button type="button" id="submitPin" style="width: 100%; padding: 8px; background: #4CAF50; color: #fff; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; transition: background 0.2s;">Submit</button>
       </form>
     </div>

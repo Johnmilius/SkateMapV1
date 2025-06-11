@@ -3,15 +3,36 @@ import { initializeMap } from './map.js';
 import { renderPins } from './pins.js';
 import { fetchPins, deletePin, addPin } from './api.js';
 import { createPinFormPopup } from './ui.js';
+import { showLoggedInUserUI } from './profileUI.js';
 
 const map = initializeMap();
 let allPins = [];
 
 // --- Load and display existing pins from the backend ---
-fetchPins().then(data => {
-  allPins = data;
-  renderPins(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin);
-});
+let allProfiles = [];
+fetch('/api/profiles')
+  .then(res => res.json())
+  .then(profiles => {
+    allProfiles = profiles;
+    return fetchPins();
+  })
+  .then(data => {
+    allPins = data;
+    renderPinsWithUser(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
+  });
+
+// --- Render pins with user info ---
+function renderPinsWithUser(pins, map, allPins, setAllPins, onDelete, profiles) {
+  // Map userId to username for quick lookup
+  const userMap = {};
+  profiles.forEach(p => { userMap[p.id] = p.username; });
+  // Patch renderPins to add username to pin object
+  const pinsWithUser = pins.map(pin => ({
+    ...pin,
+    username: pin.userId && userMap[pin.userId] ? userMap[pin.userId] : (pin.userId ? pin.userId : 'Anonymous')
+  }));
+  renderPins(pinsWithUser, map, allPins, setAllPins, onDelete);
+}
 
 // --- Search and filter pins ---
 const searchForm = document.getElementById('searchForm');
@@ -26,7 +47,7 @@ if (searchForm && searchInput) {
       (pin.note && pin.note.toLowerCase().includes(term)) ||
       (pin.difficulty && pin.difficulty.toLowerCase().includes(term))
     );
-    renderPins(filtered, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin);
+    renderPinsWithUser(filtered, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
   });
 }
 
@@ -40,10 +61,26 @@ map.on('click', function (e) {
     const formData = new FormData(form);
     formData.append('lat', lat);
     formData.append('lng', lng);
+    // Add public/private value from checkbox
+    const publicPin = document.getElementById('publicPin');
+    formData.append('public', publicPin && publicPin.checked ? 'true' : 'false');
+    // Add userId if logged in
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && user.id) {
+      formData.append('userId', user.id);
+    }
     addPin(formData)
       .then(data => {
-        allPins.push(data);
-        renderPins(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin);
+        return fetch('/api/profiles')
+          .then(res => res.json())
+          .then(profiles => {
+            allProfiles = profiles;
+            return fetchPins();
+          })
+          .then(data => {
+            allPins = data;
+            renderPinsWithUser(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
+          });
       })
       .catch(err => console.error('Error:', err));
   });
@@ -54,10 +91,38 @@ function handleDeletePin(id) {
     .then(result => {
       if (result.success) {
         allPins = allPins.filter(p => p.id !== id);
-        renderPins(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin);
+        renderPinsWithUser(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
       } else {
         alert(result.error || 'Failed to delete pin.');
       }
     })
     .catch(err => alert('Error deleting pin: ' + err));
+}
+
+// --- Show logged-in user info if available ---
+// (Moved to showLoggedInUserUI in profileUI.js)
+
+// Call after DOM is loaded to show logged-in user info
+showLoggedInUserUI();
+
+// --- Filter and display user's own pins ---
+const myPinsBtn = document.getElementById('myPinsBtn');
+if (myPinsBtn) {
+  myPinsBtn.addEventListener('click', function() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && user.id) {
+      const myPins = allPins.filter(pin => pin.userId === user.id);
+      renderPinsWithUser(myPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
+    } else {
+      alert('You must be logged in to view your pins.');
+    }
+  });
+}
+
+// --- Show all pins ---
+const allPinsBtn = document.getElementById('allPinsBtn');
+if (allPinsBtn) {
+  allPinsBtn.addEventListener('click', function() {
+    renderPinsWithUser(allPins, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
+  });
 }

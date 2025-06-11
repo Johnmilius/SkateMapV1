@@ -34,6 +34,9 @@ export function renderPins(pins, map, allPins, setAllPins, onDelete) {
     const popupContent = `
       <div>
         <h4 style='margin:0 0 6px 0;'>${pin.name || ''}</h4>
+        <div style="font-size:0.95em; color:#555; margin-bottom:4px;">
+          <span>By: ${pin.username ? pin.username : 'Anonymous'}</span>
+        </div>
         <img src="${pin.image}" alt="Pin Image" style="width: 100%; height: auto;">
         <p>Rating: ${pin.rating} Stars</p>
         <p>Difficulty: ${pin.difficulty}</p>
