@@ -1,27 +1,14 @@
 [
   {
-    "id": "user-001",
-    "username": "rexskater",
-    "email": "rexskater@email.com"
-  },
-  {
-    "id": "user-002",
-    "username": "trailblazer",
-    "email": "trailblazer@email.com"
-  },
-  {
-    "id": "user-003",
-    "username": "secretspot",
-    "email": "secretspot@email.com"
-  },
-  {
-    "id": "user-004",
+    "id": "c86e6f0c-83d0-4035-acfe-897717b506c9",
     "username": "test1",
-    "email": "test1@email.com"
+    "email": "test1@gmail.com",
+    "password": "test1"
   },
   {
-    "id": "user-005",
-    "username": "sk8dude",
-    "email": "sk8dude@email.com"
+    "id": "f28d41d4-0c65-42a2-aa4d-cca8f6c8b130",
+    "username": "test2",
+    "email": "test2@email.com",
+    "password": "$2b$10$n9zCi1kCbfJkQvQnR5DGF.BpAWIijA7yprnV5v5i6sz9lxQ6Gq/hy"
   }
 ]

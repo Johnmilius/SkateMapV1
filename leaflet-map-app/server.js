@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid'); // Add at the top with other requires
 const multer = require('multer'); // For handling file uploads
+const bcrypt = require('bcrypt'); // For password hashing
 const app = express();
 const PORT = 3000;
 
@@ -124,10 +125,10 @@ app.get('/api/profiles', (req, res) => {
 });
 
 // Create a new profile
-app.post('/api/profiles', (req, res) => {
-  const { username, email } = req.body;
-  if (!username || !email) {
-    return res.status(400).json({ error: 'Username and email are required.' });
+app.post('/api/profiles', async (req, res) => {
+  const { username, email, password } = req.body;
+  if (!username || !email || !password) {
+    return res.status(400).json({ error: 'Username, email, and password are required.' });
   }
   let profiles = [];
   if (fs.existsSync(profilesFilePath)) {
@@ -137,10 +138,35 @@ app.post('/api/profiles', (req, res) => {
   if (profiles.some(p => p.username === username || p.email === email)) {
     return res.status(409).json({ error: 'Username or email already exists.' });
   }
-  const newProfile = { id: uuidv4(), username, email };
+  // Hash the password before saving
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newProfile = { id: uuidv4(), username, email, password: hashedPassword };
   profiles.push(newProfile);
   fs.writeFileSync(profilesFilePath, JSON.stringify(profiles, null, 2));
-  res.status(201).json(newProfile);
+  res.status(201).json({ id: newProfile.id, username: newProfile.username, email: newProfile.email });
+});
+
+// Login endpoint
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required.' });
+  }
+  let profiles = [];
+  if (fs.existsSync(profilesFilePath)) {
+    profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+  }
+  const user = profiles.find(p => p.username === username);
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid username or password.' });
+  }
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    return res.status(401).json({ error: 'Invalid username or password.' });
+  }
+  // Do not send password back
+  const { password: pw, ...userSafe } = user;
+  res.json(userSafe);
 });
 
 app.listen(PORT, () => {

@@ -8,10 +8,15 @@ const loginStatus = document.getElementById('loginStatus');
 loginForm.onsubmit = async function(e) {
   e.preventDefault();
   const username = document.getElementById('loginUsername').value.trim();
-  const email = document.getElementById('loginEmail').value.trim();
-  const profiles = await fetchProfiles();
-  const user = profiles.find(p => p.username === username && p.email === email);
-  if (user) {
+  const password = document.getElementById('loginPassword').value;
+  // Send login request to backend
+  const res = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  });
+  if (res.ok) {
+    const user = await res.json();
     localStorage.setItem('currentUser', JSON.stringify(user));
     loginStatus.style.color = 'green';
     loginStatus.textContent = 'Login successful! Redirecting...';
@@ -19,7 +24,8 @@ loginForm.onsubmit = async function(e) {
       window.location.href = 'index.html';
     }, 1000);
   } else {
+    const err = await res.json();
     loginStatus.style.color = 'red';
-    loginStatus.textContent = 'Invalid username or email.';
+    loginStatus.textContent = err.error || 'Invalid username or password.';
   }
 };
