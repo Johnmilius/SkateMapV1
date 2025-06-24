@@ -111,6 +111,25 @@ app.delete('/api/pins/:id', (req, res) => {
   }
 });
 
+// PATCH: Update a pin's public/private status
+app.patch('/api/pins/:id', (req, res) => {
+  const id = req.params.id;
+  const { public: isPublic } = req.body;
+  const pin = pinpoints.find(pin => pin.id === id);
+  if (pin && typeof isPublic === 'boolean') {
+    pin.public = isPublic;
+    try {
+      fs.writeFileSync(pinsFilePath, JSON.stringify(pinpoints, null, 2));
+      res.status(200).json({ success: true, pin });
+    } catch (error) {
+      console.error('Error updating pin in pins.json:', error);
+      res.status(500).json({ error: 'Failed to update pin' });
+    }
+  } else {
+    res.status(400).json({ error: 'Invalid pin id or public value' });
+  }
+});
+
 // Profiles functionality
 const profilesFilePath = path.join(__dirname, 'profiles.json');
 

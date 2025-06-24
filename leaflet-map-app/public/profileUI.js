@@ -43,7 +43,7 @@ export function renderProfileForm(onCreate, onLogin, profiles) {
   return container;
 }
 
-// Show logged-in user info and hide login/create account buttons
+// Show logged-in user info and show My Profile button
 export function showLoggedInUserUI() {
   const loginBtn = document.getElementById('loginBtn');
   const createAccountBtn = document.getElementById('createAccountBtn');
@@ -64,22 +64,20 @@ export function showLoggedInUserUI() {
       welcome.style.border = '2px solid #4CAF50';
       welcome.style.letterSpacing = '1px';
       welcome.textContent = `Welcome, ${user.username}!`;
-      // Add logout button
-      const logoutBtn = document.createElement('button');
-      logoutBtn.textContent = 'Logout';
-      logoutBtn.style.marginLeft = '16px';
-      logoutBtn.style.background = '#e74c3c';
-      logoutBtn.style.color = '#fff';
-      logoutBtn.style.border = 'none';
-      logoutBtn.style.borderRadius = '6px';
-      logoutBtn.style.padding = '6px 14px';
-      logoutBtn.style.fontWeight = 'bold';
-      logoutBtn.style.cursor = 'pointer';
-      logoutBtn.onclick = function() {
-        localStorage.removeItem('currentUser');
-        window.location.reload();
-      };
-      welcome.appendChild(logoutBtn);
+      // Add My Profile button
+      const profileBtn = document.createElement('a');
+      profileBtn.textContent = 'My Profile';
+      profileBtn.href = 'profile.html';
+      profileBtn.style.marginLeft = '16px';
+      profileBtn.style.background = '#4CAF50';
+      profileBtn.style.color = '#fff';
+      profileBtn.style.border = 'none';
+      profileBtn.style.borderRadius = '6px';
+      profileBtn.style.padding = '6px 14px';
+      profileBtn.style.fontWeight = 'bold';
+      profileBtn.style.cursor = 'pointer';
+      profileBtn.style.textDecoration = 'none';
+      welcome.appendChild(profileBtn);
       document.body.appendChild(welcome);
     }
     if (loginBtn) loginBtn.style.display = 'none';

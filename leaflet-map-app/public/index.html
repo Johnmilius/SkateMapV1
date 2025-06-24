@@ -8,16 +8,35 @@
 </head>
 <body>
   <header>Skate Drop</header>
-  <a href="login.html" id="loginBtn">Login</a>
-  <a href="createAccount.html" id="createAccountBtn">Create Account</a>
-  <h1>Drop a Pin!</h1>
-  <form id="searchForm">
-    <input type="text" id="searchInput" placeholder="Search by name, note, or difficulty..." />
-    <button type="submit" id="searchBtn">Search</button>
-  </form>
-  <button id="myPinsBtn" style="margin-bottom: 18px; background: #4CAF50; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 1em; font-weight: bold; cursor: pointer; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">My Pins</button>
-  <button id="allPinsBtn" style="margin-bottom: 18px; margin-left: 10px; background: #222; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: 1em; font-weight: bold; cursor: pointer; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.10);">All Pins</button>
-  <div id="map"></div>
+  <div class="search-filter-bar">
+    <div class="search-bar">
+      <form id="searchForm">
+        <input type="text" id="searchInput" placeholder="Search by name, note, or difficulty..." />
+        <button type="submit" id="searchBtn">Search</button>
+      </form>
+    </div>
+    <div class="filter-btns">
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="5">5 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="2">2 Stars</option>
+        <option value="1">1 Star</option>
+      </select>
+      <select id="difficultyFilter">
+        <option value="">All Difficulties</option>
+        <option value="Easy">Easy</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Hard">Hard</option>
+      </select>
+      <button id="myPinsBtn">My Pins</button>
+      <button id="allPinsBtn">All Pins</button>
+    </div>
+  </div>
+  <div id="map-cross-section">
+    <div id="map"></div>
+  </div>
   <footer>&copy; 2025 Skate Drop &mdash; All rights reserved.</footer>
   <script type="module" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script type="module" src="main.js"></script>

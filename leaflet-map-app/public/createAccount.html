@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>Skate Drop</header>
+  <header style="width:100%;background:#fff;color:#222;padding:28px 0 18px 0;text-align:center;font-size:2.3em;font-family:'Bebas Neue','Montserrat',Arial,sans-serif;font-weight:700;letter-spacing:2px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,0.07);border-bottom:2px solid #e60023;text-transform:uppercase;">
+    <a href="index.html" style="text-decoration:none;color:#e60023;font-size:inherit;font-family:inherit;font-weight:inherit;letter-spacing:inherit;">Skate Drop</a>
+  </header>
   <div class="login-container">
     <h2>Create Account</h2>
     <form id="createAccountForm">
@@ -22,7 +24,10 @@
       <button type="submit">Create Account</button>
     </form>
     <div id="createStatus"></div>
-    <a href="login.html">Back to Login</a>
+    <div style="display:flex;justify-content:center;align-items:center;gap:18px;margin-bottom:10px;">
+      <a href="login.html" id="loginBtn" style="text-decoration:none;background:#fff;color:#e60023;padding:8px 18px;border-radius:8px;font-weight:bold;border:2px solid #e60023;letter-spacing:1px;transition:background 0.2s,color 0.2s;">Login</a>
+      <a href="createAccount.html" id="createAccountBtn" style="text-decoration:none;background:#fff;color:#222;padding:8px 18px;border-radius:8px;font-weight:bold;border:2px solid #222;letter-spacing:1px;transition:background 0.2s,color 0.2s;">Create Account</a>
+    </div>
     <a href="index.html">Back to Map</a>
   </div>
   <footer>&copy; 2025 Skate Drop &mdash; All rights reserved.</footer>

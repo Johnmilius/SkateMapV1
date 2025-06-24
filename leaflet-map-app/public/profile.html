@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Profile</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header
+      class="profile-header"
+      style="
+        width: 100%;
+        background: #fff;
+        color: #222;
+        padding: 28px 0 18px 0;
+        text-align: center;
+        font-size: 2.3em;
+        font-family: 'Bebas Neue', 'Montserrat', Arial, sans-serif;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        border-bottom: 2px solid #e60023;
+        text-transform: uppercase;
+      "
+    >
+      <a
+        href="index.html"
+        style="
+          position: absolute;
+          left: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: #e60023;
+          color: #fff;
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-size: 0.95em;
+          font-family: 'Montserrat', Arial, sans-serif;
+          font-weight: 500;
+          text-decoration: none;
+          letter-spacing: 1px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        "
+        >&larr; Back</a
+      >
+
+      <span class="profile-title"
+        ><a
+          href="index.html"
+          style="
+            text-decoration: none;
+            color: #e60023;
+            font-size: inherit;
+            font-family: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+          "
+          >Skate Drop</a
+        >
+      </span>
+    </header>
+    <div id="profileInfo"></div>
+    <button id="logoutBtn">Logout</button>
+    <script type="module" src="profilePage.js"></script>
+  </body>
+</html>
