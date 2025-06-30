@@ -37,17 +37,33 @@ function renderPinsWithUser(pins, map, allPins, setAllPins, onDelete, profiles) 
 // --- Search and filter pins ---
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
+const ratingFilter = document.getElementById('ratingFilter');
+const difficultyFilter = document.getElementById('difficultyFilter');
 
 if (searchForm && searchInput) {
   searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const term = searchInput.value.trim().toLowerCase();
-    const filtered = allPins.filter(pin =>
-      (pin.name && pin.name.toLowerCase().includes(term)) ||
-      (pin.note && pin.note.toLowerCase().includes(term)) ||
-      (pin.difficulty && pin.difficulty.toLowerCase().includes(term))
-    );
+    const ratingVal = ratingFilter ? ratingFilter.value : '';
+    const difficultyVal = difficultyFilter ? difficultyFilter.value : '';
+    const filtered = allPins.filter(pin => {
+      const matchesTerm =
+        (!term || (pin.name && pin.name.toLowerCase().includes(term)) ||
+        (pin.note && pin.note.toLowerCase().includes(term)) ||
+        (pin.difficulty && pin.difficulty.toLowerCase().includes(term)));
+      const matchesRating = !ratingVal || (pin.rating && String(pin.rating) === ratingVal);
+      const matchesDifficulty = !difficultyVal || (pin.difficulty && pin.difficulty === difficultyVal);
+      return matchesTerm && matchesRating && matchesDifficulty;
+    });
     renderPinsWithUser(filtered, map, allPins, (newPins) => { allPins = newPins; }, handleDeletePin, allProfiles);
+  });
+  // Update pins on dropdown change without submit
+  [ratingFilter, difficultyFilter].forEach(filter => {
+    if (filter) {
+      filter.addEventListener('change', () => {
+        searchForm.dispatchEvent(new Event('submit'));
+      });
+    }
   });
 }
 

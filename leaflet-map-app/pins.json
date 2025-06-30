@@ -250,18 +250,6 @@
     "userId": "user-004"
   },
   {
-    "id": "5c34bbb7-01d7-418c-8127-48b4bedbe5d8",
-    "lat": 43.845827407384334,
-    "lng": -111.7847016968569,
-    "name": "eassad",
-    "image": "",
-    "note": "",
-    "rating": 2,
-    "difficulty": "Easy",
-    "public": true,
-    "userId": "f28d41d4-0c65-42a2-aa4d-cca8f6c8b130"
-  },
-  {
     "id": "pin-t2-001",
     "lat": 43.8301,
     "lng": -111.7925,
