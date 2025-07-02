@@ -8,9 +8,6 @@ const multer = require('multer'); // For handling file uploads
 const bcrypt = require('bcrypt'); // For password hashing
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
 
 let pinpoints = []; // In-memory store
 
@@ -139,8 +136,13 @@ const profilesFilePath = path.join(__dirname, 'profiles.json');
 // Get all profiles
 app.get('/api/profiles', (req, res) => {
   if (fs.existsSync(profilesFilePath)) {
-    const profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
-    res.json(profiles);
+    try {
+      const profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+      res.json(profiles);
+    } catch (error) {
+      console.error('Error reading or parsing profiles.json:', error);
+      res.status(500).json({ error: 'Failed to read profiles.' });
+    }
   } else {
     res.json([]);
   }
@@ -154,17 +156,33 @@ app.post('/api/profiles', async (req, res) => {
   }
   let profiles = [];
   if (fs.existsSync(profilesFilePath)) {
-    profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+    try {
+      profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+    } catch (error) {
+      console.error('Error reading or parsing profiles.json:', error);
+      return res.status(500).json({ error: 'Failed to read profiles.' });
+    }
   }
   // Check for duplicate username or email
   if (profiles.some(p => p.username === username || p.email === email)) {
     return res.status(409).json({ error: 'Username or email already exists.' });
   }
   // Hash the password before saving
-  const hashedPassword = await bcrypt.hash(password, 10);
+  let hashedPassword;
+  try {
+    hashedPassword = await bcrypt.hash(password, 10);
+  } catch (error) {
+    console.error('Error hashing password:', error);
+    return res.status(500).json({ error: 'Failed to hash password.' });
+  }
   const newProfile = { id: uuidv4(), username, email, password: hashedPassword };
   profiles.push(newProfile);
-  fs.writeFileSync(profilesFilePath, JSON.stringify(profiles, null, 2));
+  try {
+    fs.writeFileSync(profilesFilePath, JSON.stringify(profiles, null, 2));
+  } catch (error) {
+    console.error('Error writing to profiles.json:', error);
+    return res.status(500).json({ error: 'Failed to save profile.' });
+  }
   res.status(201).json({ id: newProfile.id, username: newProfile.username, email: newProfile.email });
 });
 
@@ -176,13 +194,24 @@ app.post('/api/login', async (req, res) => {
   }
   let profiles = [];
   if (fs.existsSync(profilesFilePath)) {
-    profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+    try {
+      profiles = JSON.parse(fs.readFileSync(profilesFilePath, 'utf-8'));
+    } catch (error) {
+      console.error('Error reading or parsing profiles.json:', error);
+      return res.status(500).json({ error: 'Failed to read profiles.' });
+    }
   }
   const user = profiles.find(p => p.username === username);
   if (!user) {
     return res.status(401).json({ error: 'Invalid username or password.' });
   }
-  const match = await bcrypt.compare(password, user.password);
+  let match;
+  try {
+    match = await bcrypt.compare(password, user.password);
+  } catch (error) {
+    console.error('Error comparing password:', error);
+    return res.status(500).json({ error: 'Failed to verify password.' });
+  }
   if (!match) {
     return res.status(401).json({ error: 'Invalid username or password.' });
   }
