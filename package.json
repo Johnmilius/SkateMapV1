@@ -1,5 +1,27 @@
 {
+  "name": "skate_map_v3",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Johnmilius/skate_map_v3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Johnmilius/skate_map_v3/issues"
+  },
+  "homepage": "https://github.com/Johnmilius/skate_map_v3#readme",
+  "description": "",
   "dependencies": {
-    "multer": "^2.0.0"
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "uuid": "^11.1.0"
   }
 }
