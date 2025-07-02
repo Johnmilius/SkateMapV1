@@ -7,7 +7,10 @@ const { v4: uuidv4 } = require('uuid'); // Add at the top with other requires
 const multer = require('multer'); // For handling file uploads
 const bcrypt = require('bcrypt'); // For password hashing
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 let pinpoints = []; // In-memory store
 

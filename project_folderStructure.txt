@@ -1,0 +1,24 @@
+SkateMapV1/
+├── package.json
+├── pins.json
+├── profiles.json
+├── README.txt
+├── server.js
+└── public/
+    ├── api.js
+    ├── createAccount.html
+    ├── createAccount.js
+    ├── index.html
+    ├── login.html
+    ├── login.js
+    ├── main.js
+    ├── map.js
+    ├── pins.js
+    ├── profile.html
+    ├── profileApi.js
+    ├── profilePage.js
+    ├── profileUI.js
+    ├── styles.css
+    ├── ui.js
+    └── uploads/
+        └── 1748391861380-724503915.jpg
