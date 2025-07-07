@@ -1,44 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Skate Drop</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>Skate Drop</header>
-  <div class="search-filter-bar">
-    <div class="search-bar">
-      <form id="searchForm">
-        <input type="text" id="searchInput" placeholder="Search by name, note, or difficulty..." />
-        <button type="submit" id="searchBtn">Search</button>
-      </form>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Skate Drop</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>Skate Drop</header>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 10px;
+      "
+    >
+      <a
+        href="login.html"
+        id="loginBtn"
+        style="
+          text-decoration: none;
+          background: #fff;
+          color: #e60023;
+          padding: 8px 18px;
+          border-radius: 8px;
+          font-weight: bold;
+          border: 2px solid #e60023;
+          letter-spacing: 1px;
+          transition: background 0.2s, color 0.2s;
+        "
+        >Login</a
+      >
+      <a
+        href="createAccount.html"
+        id="createAccountBtn"
+        style="
+          text-decoration: none;
+          background: #fff;
+          color: #222;
+          padding: 8px 18px;
+          border-radius: 8px;
+          font-weight: bold;
+          border: 2px solid #222;
+          letter-spacing: 1px;
+          transition: background 0.2s, color 0.2s;
+        "
+        >Create Account</a
+      >
     </div>
-    <div class="filter-btns">
-      <select id="ratingFilter">
-        <option value="">All Ratings</option>
-        <option value="5">5 Stars</option>
-        <option value="4">4 Stars</option>
-        <option value="3">3 Stars</option>
-        <option value="2">2 Stars</option>
-        <option value="1">1 Star</option>
-      </select>
-      <select id="difficultyFilter">
-        <option value="">All Difficulties</option>
-        <option value="Easy">Easy</option>
-        <option value="Moderate">Moderate</option>
-        <option value="Hard">Hard</option>
-      </select>
-      <button id="myPinsBtn">My Pins</button>
-      <button id="allPinsBtn">All Pins</button>
+    <div class="search-filter-bar">
+      <div class="search-bar">
+        <form id="searchForm">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by name, note, or difficulty..."
+          />
+          <button type="submit" id="searchBtn">Search</button>
+        </form>
+      </div>
+      <div class="filter-btns">
+        <select id="ratingFilter">
+          <option value="">All Ratings</option>
+          <option value="5">5 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="2">2 Stars</option>
+          <option value="1">1 Star</option>
+        </select>
+        <select id="difficultyFilter">
+          <option value="">All Difficulties</option>
+          <option value="Easy">Easy</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Hard">Hard</option>
+        </select>
+        <button id="myPinsBtn">My Pins</button>
+        <button id="allPinsBtn">All Pins</button>
+      </div>
     </div>
-  </div>
-  <div id="map-cross-section">
-    <div id="map"></div>
-  </div>
-  <footer>&copy; 2025 Skate Drop &mdash; All rights reserved.</footer>
-  <script type="module" src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script type="module" src="main.js"></script>
-</body>
+    <div id="map-cross-section">
+      <div id="map"></div>
+    </div>
+    <footer>&copy; 2025 Skate Drop &mdash; All rights reserved.</footer>
+    <script
+      type="module"
+      src="https://unpkg.com/leaflet/dist/leaflet.js"
+    ></script>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
