@@ -258,3 +258,201 @@ footer {
 #logoutBtn:hover {
   background: #b8001a;
 }
+
+/* Main header/title */
+#headerMainSiteTitle {
+  width: 100%;
+  background: #fff;
+  color: #222;
+  padding: 28px 0 18px 0;
+  text-align: center;
+  font-size: 2.3em;
+  font-family: 'Bebas Neue', 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border-bottom: 2px solid #e60023;
+  text-transform: uppercase;
+  position: relative;
+}
+
+#headerTopButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  top: 24px;
+  right: 32px;
+}
+
+#headerLoginButton, #headerCreateAccountButton {
+  text-decoration: none;
+  background: #e60023;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  letter-spacing: 1px;
+  font-size: 1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+  display: inline-block;
+}
+#headerCreateAccountButton {
+  background: #fff;
+  color: #e60023;
+  border: 2px solid #e60023;
+}
+#headerLoginButton:hover, #headerCreateAccountButton:hover {
+  background: #ff1a1a;
+  color: #fff;
+}
+
+#searchFilterBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+}
+#searchBarContainer {
+  margin-bottom: 18px;
+}
+#searchInputField {
+  width: 300px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: 1.5px solid #bbb;
+  font-size: 1em;
+  background: #fff;
+  color: #222;
+  transition: border 0.2s;
+}
+#searchInputField:focus {
+  border: 1.5px solid #e60023;
+  outline: none;
+}
+#searchButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #e60023;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+#searchButton:hover {
+  background: #ff1a1a;
+}
+#filterButtonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+#ratingFilterSelect, #difficultyFilterSelect {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #bbb;
+  font-size: 1em;
+  background: #fff;
+  color: #222;
+}
+#myPinsButton, #allPinsButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #e60023;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s;
+}
+#myPinsButton:hover, #allPinsButton:hover {
+  background: #ff1a1a;
+}
+#mapCrossSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#map {
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+  border: 2px solid #e60023;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+  border-radius: 18px;
+  margin-bottom: 32px;
+  background: #fff;
+}
+#footerMain {
+  width: 100%;
+  background: #fff;
+  color: #888;
+  text-align: center;
+  padding: 18px 0 14px 0;
+  font-size: 1em;
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin-top: 40px;
+  letter-spacing: 1px;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 700px) {
+  #headerMainSiteTitle {
+    font-size: 1.3em;
+    padding: 18px 0 12px 0;
+  }
+  #headerTopButtonContainer {
+    position: static;
+    justify-content: center;
+    margin-top: 8px;
+    gap: 8px;
+  }
+  #searchFilterBar {
+    padding: 0 8px;
+  }
+  #searchInputField {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 8px;
+  }
+  #searchBarContainer {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #filterButtonsContainer {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  #map {
+    width: 100vw;
+    min-width: 0;
+    height: 350px;
+    border-radius: 10px;
+  }
+  #mapCrossSection {
+    padding: 0 0 12px 0;
+  }
+  #myPinsButton, #allPinsButton, #searchButton {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
