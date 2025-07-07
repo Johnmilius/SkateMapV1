@@ -413,46 +413,87 @@ footer {
 }
 
 /* Responsive styles for mobile */
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
+  body {
+    font-size: 1.08em;
+    padding: 0 0 32px 0;
+    margin: 0;
+    overflow-x: hidden;
+    background: #fff;
+  }
   #headerMainSiteTitle {
     font-size: 1.3em;
-    padding: 18px 0 12px 0;
+    padding: 24px 0 18px 0;
+    margin-bottom: 18px;
   }
   #headerTopButtonContainer {
     position: static;
     justify-content: center;
-    margin-top: 8px;
-    gap: 8px;
+    margin-top: 16px;
+    gap: 16px;
+  }
+  #headerLoginButton, #headerCreateAccountButton {
+    margin-bottom: 8px;
   }
   #searchFilterBar {
-    padding: 0 8px;
+    padding: 18px 4vw 18px 4vw;
+    margin-bottom: 18px;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    background: #fff;
+  }
+  #searchBarContainer {
+    width: 100%;
+    margin-bottom: 18px;
   }
   #searchInputField {
     width: 100%;
     min-width: 0;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
+    font-size: 1.08em;
+    padding: 16px;
+    border-radius: 14px;
   }
-  #searchBarContainer {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  #filterButtonsContainer {
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-  }
-  #map {
-    width: 100vw;
-    min-width: 0;
-    height: 350px;
-    border-radius: 10px;
-  }
-  #mapCrossSection {
-    padding: 0 0 12px 0;
-  }
-  #myPinsButton, #allPinsButton, #searchButton {
+  #searchButton {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
+    font-size: 1.08em;
+    padding: 16px 0;
+    border-radius: 14px;
+    margin-top: 10px;
   }
-} */
+  #filterButtonsContainer {
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #ratingFilterSelect, #difficultyFilterSelect {
+    width: 100%;
+    font-size: 1.08em;
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+  #myPinsButton, #allPinsButton {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 1.08em;
+    padding: 16px 0;
+    border-radius: 14px;
+    margin-top: 10px;
+  }
+  #map, #mainMap {
+    width: 98vw !important;
+    min-width: 0;
+    height: 45vh !important;
+    min-height: 220px;
+    border-radius: 14px;
+    margin: 0 auto 24px auto;
+  }
+  #mapCrossSection {
+    padding: 0 0 18px 0;
+  }
+}
